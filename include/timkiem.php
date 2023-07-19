@@ -11,7 +11,7 @@
 	?> 
 <!-- top Products -->
 	<div class="ads-grid py-sm-5 py-4">
-		<div class=" py-xl-4 py-lg-2">
+		<div class="py-xl-4 py-lg-2">
 			<!-- tittle heading -->
 			<h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">Từ khóa tìm kiếm : <?php echo $title ?></h3>
 			<!-- //tittle heading -->
