@@ -19,7 +19,7 @@
  	$insert_row = mysqli_query($con,$sql_giohang);
  	// if($insert_row==0){
  	// 	header('Location:index.php?quanly=chitietsp&id='.$sanpham_id);	
- 	// }
+ 	// }đsvds
 
  }elseif(isset($_POST['capnhatsoluong'])){
  	
