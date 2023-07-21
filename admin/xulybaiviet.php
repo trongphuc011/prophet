@@ -47,7 +47,7 @@
 	<link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	
 	  <div class="collapse navbar-collapse" id="navbarNav">
 	    <ul class="navbar-nav">
 	      <li class="nav-item active">
