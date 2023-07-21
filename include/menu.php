@@ -35,7 +35,7 @@
 						?>
 						<li class="nav-item  mr-lg-2 mb-lg-0 mb-2">
 
-							<a class="nav-link " href="?quanly=danhmuc&id=<?php echo $row_category_danhmuc['category_id'] ?>" role="button"  aria-haspopup="true" aria-expanded="false">
+							<a class="nav-link menu_main" href="?quanly=danhmuc&id=<?php echo $row_category_danhmuc['category_id'] ?>" role="button"  aria-haspopup="true" aria-expanded="false">
 								<?php echo $row_category_danhmuc['category_name'] ?>
 							</a>
 							
