@@ -69,7 +69,7 @@
 						</li>
 						<li class="text-center text-white">
 							<a href="#" data-toggle="modal" data-target="#dangky" class="text-white">
-								<i class="fas fa-sign-out-alt mr-2"></i>Đăng ký </a>
+								<i class="fas fa-sign-out-alt mr-2"></i>Đăng  </a>
 						</li>
 					</ul>
 					<!-- //header lists -->
