@@ -1,4 +1,32 @@
 <?php
+
+
+
+function connectDB_user($sql){
+          //Kết nối database
+          $servername = "localhost:3307";
+          $username = "root";
+          $password = "";
+  
+          try {
+            
+          $conn = new PDO("mysql:host=$servername;dbname=bandienmay", $username, $password);
+          // set the PDO error mode to exception
+          $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+         //  echo "Connected successfully";
+          $stmt = $conn->prepare("SELECT * FROM tbl_khachhang");
+          $stmt->execute();
+  
+          // set the resulting array to associative
+          $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+          $products=$stmt->fetchAll();
+          return $products;
+         } catch(PDOException $e) {
+             echo "Connection failed: " . $e->getMessage();
+             }
+         }
+
+
 	// session_destroy();
 	// unset('dangnhap');
 	if(isset($_POST['dangnhap_home'])) {
@@ -9,22 +37,23 @@
 		}else{
 			$sql_select_admin = mysqli_query($con,"SELECT * FROM tbl_khachhang WHERE email='$taikhoan' AND password='$matkhau' LIMIT 1");
 			$count = mysqli_num_rows($sql_select_admin);
+			$role = 
 			$row_dangnhap = mysqli_fetch_array($sql_select_admin);
 			if($count>0){
 				$_SESSION['dangnhap_home'] = $row_dangnhap['name'];
+				$_SESSION['role'] = $row_dangnhap['role'];
 				$_SESSION['khachhang_id'] = $row_dangnhap['khachhang_id'];
 				
-				header('Location: index.php?quanly=giohang');
 			}else{
 				echo '<script>alert("Tài khoản mật khẩu sai")</script>';
 			}
 		}
-	}elseif(isset($_POST['dangky'])){
+	}else if(isset($_POST['dangky'])){
 		$name = $_POST['name'];
 	 	$phone = $_POST['phone'];
 	 	$email = $_POST['email'];
 	 	$password = md5($_POST['password']);
-	 	$note = $_POST['note'];
+	 	$role = $_POST['role'];
 	 	$address = $_POST['address'];
 	 	$giaohang = $_POST['giaohang'];
  
@@ -65,12 +94,27 @@
 						</li>
 						<li class="text-center border-right text-white">
 							<a href="#" data-toggle="modal" data-target="#dangnhap" class="text-white">
-								<i class="fas fa-sign-in-alt mr-2"></i> Đăng nhập </a>
+								 <?php 
+				if(isset($_SESSION['dangnhap_home'])){
+					echo '<p style="color:#000;">Xin chào bạn: '.$_SESSION['dangnhap_home'].'<a href="index.php?quanly=giohang&dangxuat=1">Đăng xuất</a></p>';
+					
+				
+				if($_SESSION['role']==1){
+					echo '<li class="text-center text-white">
+					<a href="./admin/dashboard.php">Admin </a></li>';
+				} else {
+					
+				}
+				}else{
+					echo 'đăng nhập';
+					echo '<li class="text-center text-white">
+					<a href="#" data-toggle="modal" data-target="#dangky" class="text-white">
+						<i class="fas fa-sign-out-alt mr-2"></i>Đăng ký </a>
+				</li>';
+				}
+				?> </a>
 						</li>
-						<li class="text-center text-white">
-							<a href="#" data-toggle="modal" data-target="#dangky" class="text-white">
-								<i class="fas fa-sign-out-alt mr-2"></i>Đăng ký </a>
-						</li>
+						
 					</ul>
 					<!-- //header lists -->
 				</div>
@@ -146,8 +190,9 @@
 							<input type="hidden" class="form-control" placeholder="" name="giaohang"  value="0">
 						</div>
 						<div class="form-group">
-							<label class="col-form-label">Ghi chú</label>
-							<textarea class="form-control" name="note"></textarea>
+							<label class="col-form-label">role</label>
+							<input type="text" class="form-control" placeholder=" " name="role"  required="">
+							<input type="hidden" class="form-control" placeholder="" name="giaohang"  value="0">
 						</div>
 						
 						<div class="right-w3l">

@@ -93,13 +93,7 @@
 			<h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
 				Giỏ hàng của bạn
 			</h3>
-				<?php 
-				if(isset($_SESSION['dangnhap_home'])){
-					echo '<p style="color:#000;">Xin chào bạn: '.$_SESSION['dangnhap_home'].'<a href="index.php?quanly=giohang&dangxuat=1">Đăng xuất</a></p>';
-				}else{
-					echo '';
-				}
-				?>
+				
 				
 			<!-- //tittle heading -->
 			<div class="checkout-right">
