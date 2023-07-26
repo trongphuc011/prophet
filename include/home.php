@@ -4,7 +4,7 @@
 
 	echo '<div class="section-title product__discount__title">
                             
-			<h2 style="margin-top:30px;">laptop</h2>
+			<h2 style="margin-top:30px;">Áo khoác</h2>
 
 
 		</div>';
