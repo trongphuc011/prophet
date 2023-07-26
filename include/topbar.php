@@ -106,7 +106,7 @@ function connectDB_user($sql){
 					
 				}
 				}else{
-					echo 'đăng nhập';
+					echo 'Đăng nhập';
 					echo '<li class="text-center text-white">
 					<a href="#" data-toggle="modal" data-target="#dangky" class="text-white">
 						<i class="fas fa-sign-out-alt mr-2"></i>Đăng ký </a>
