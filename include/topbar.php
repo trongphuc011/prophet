@@ -189,11 +189,7 @@ function connectDB_user($sql){
 							<input type="password" class="form-control" placeholder=" " name="password"  required="">
 							<input type="hidden" class="form-control" placeholder="" name="giaohang"  value="0">
 						</div>
-						<div class="form-group">
-							<label class="col-form-label">role</label>
-							<input type="text" class="form-control" placeholder=" " name="role"  required="">
-							<input type="hidden" class="form-control" placeholder="" name="giaohang"  value="0">
-						</div>
+						
 						
 						<div class="right-w3l">
 							<input type="submit" class="form-control" name="dangky" value="Đăng ký">
