@@ -38,9 +38,9 @@
 					<div class="grid images_3_of_2">
 						<div class="flexslider">
 							<ul class="slides">
-								<li data-thumb="images/<?php echo $row_chitiet['sanpham_image'] ?>">
+								<li data-thumb="uploads/<?php echo $row_chitiet['sanpham_image'] ?>">
 									<div class="thumb-image">
-										<img src="images/<?php echo $row_chitiet['sanpham_image'] ?>" data-imagezoom="true" class="img-fluid" alt=""> </div>
+										<img src="uploads/<?php echo $row_chitiet['sanpham_image'] ?>" data-imagezoom="true" class="img-fluid" alt=""> </div>
 								</li>
 							
 								

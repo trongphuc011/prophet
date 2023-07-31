@@ -14,7 +14,8 @@
 	<div class="ads-grid py-sm-5 py-4">
 		<div class=" py-xl-4 py-lg-2">
 			<!-- tittle heading -->
-			<h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3"><?php echo $title ?></h3>
+
+			
 			<!-- //tittle heading -->
 			<!-- <div class="row"> -->
 				<!-- product left -->
@@ -22,6 +23,7 @@
 					<div class="wrapper">
 						<!-- first section -->
 						<div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
+						<h2 style="margin-top:30px;"><?php echo  $title ?>
 							<div class="row">
 								<?php
 								while($row_sanpham = mysqli_fetch_array($sql_cate)){ 
@@ -29,7 +31,7 @@
 								<div  class="col-md-3 product-men mt-5">
 									<div class="men-pro-item simpleCart_shelfItem">
 										<div class="men-thumb-item text-center">
-											<img style="width: 200px;" src="images/<?php echo $row_sanpham['sanpham_image'] ?>" alt="">
+											<img style="width: 300x; height:400px;" src="uploads/<?php echo $row_sanpham['sanpham_image'] ?>" alt="">
 											<div class="men-cart-pro">
 												<div class="inner-men-cart-pro">
 													<a href="?quanly=chitietsp&id=<?php echo $row_sanpham['sanpham_id'] ?>" class="link-product-add-cart">Xem sản phẩm</a>
@@ -52,7 +54,7 @@
 													<input type="hidden" name="giasanpham" value="<?php echo $row_sanpham['sanpham_gia'] ?>" />
 													<input type="hidden" name="hinhanh" value="<?php echo $row_sanpham['sanpham_image'] ?>" />
 													<input type="hidden" name="soluong" value="1" />			
-													<input type="submit" name="themgiohang" value="Thêm giỏ hàng" class="button" />
+													<input type="submit" name="themgiohang" value="Thêm giỏ hàng" class="buy" />
 												</fieldset>
 											</form>
 											</div>

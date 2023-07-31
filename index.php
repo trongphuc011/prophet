@@ -22,7 +22,7 @@
 		}
 	</script>
 	<!-- //Meta tag Keywords -->
-	<link rel="stylesheet" href="css/style1.css">
+	<link rel="stylesheet" href="css/style2.css">
 
 
 	<!-- Custom-Files -->
@@ -42,7 +42,7 @@
 	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
 	    rel="stylesheet">
 		<link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/stl.css">
+    <link rel="stylesheet" href="css/qqq.css">
 	<!-- //web fonts -->
 
 </head>
@@ -232,3 +232,6 @@
 </body>
 
 </html>
+
+
+

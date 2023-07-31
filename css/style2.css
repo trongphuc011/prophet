@@ -258,9 +258,10 @@ input[type="submit"] {
 /*-- header cart button --*/
 
 button.w3view-cart {
+    
     font-size: 20px;
     color: #fff;
-    width: 50px;
+   width: auto;
     height: 44px;
     background: #000;
     border: 1px solid rgba(27, 25, 25, 0.27);
@@ -2975,10 +2976,13 @@ div#testimonials h4.m-title {
     }
     .top_nav_right {
         padding: 0;
+        
     }
+
+   
     button.w3view-cart {
         font-size: 20px;
-        width: 40px;
+        
         height: 40px;
         padding: 0;
     }
@@ -3240,6 +3244,27 @@ div#testimonials h4.m-title {
         width: 45%;
     }
 }
+
+.ccc {
+    width: 500px !important;
+    
+}
+
+.dnc {
+    position: relative;
+}
+
+.dn {
+    position: absolute;
+    top: 100px;
+    display: none;
+}
+
+.dnc:hover .dn {
+    display: block;
+}
+
+
 
 
 /*--//responsive--*/

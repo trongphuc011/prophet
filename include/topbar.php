@@ -68,59 +68,7 @@ function connectDB_user($sql){
 ?> 
 
 <!-- top-header -->
-	<div class="agile-main-top">
-		<div class="container-fluid">
-			<div style="    background: #000;" class="row main-top-w3l py-2 ">
-				<div class="col-lg-4 header-most-top">
-					
-				</div>
-				<div class="col-lg-8 header-right mt-lg-0 mt-2">
-					<!-- header lists -->
-					<ul>
-
-						<?php
-						if(isset($_SESSION['dangnhap_home'])){ 
-						
-						?>
-						<li class="text-center border-right text-white">
-							<a href="index.php?quanly=xemdonhang&khachhang=<?php echo $_SESSION['khachhang_id'] ?>" class="text-white">
-								<i class="fas fa-truck mr-2"></i>Xem đơn hàng : <?php echo $_SESSION['dangnhap_home'] ?></a>
-						</li>
-						<?php
-					}
-						?>
-						<li class="text-center border-right text-white">
-							<i class="fas fa-phone mr-2"></i> 0909999999
-						</li>
-						<li class="text-center border-right text-white">
-							<a href="#" data-toggle="modal" data-target="#dangnhap" class="text-white">
-								 <?php 
-				if(isset($_SESSION['dangnhap_home'])){
-					echo '<p style="color:#000;">Xin chào bạn: '.$_SESSION['dangnhap_home'].'<a href="index.php?quanly=giohang&dangxuat=1">Đăng xuất</a></p>';
-					
-				
-				if($_SESSION['role']==1){
-					echo '<li class="text-center text-white">
-					<a href="./admin/dashboard.php">Admin </a></li>';
-				} else {
-					
-				}
-				}else{
-					echo 'Đăng nhập';
-					echo '<li class="text-center text-white">
-					<a href="#" data-toggle="modal" data-target="#dangky" class="text-white">
-						<i class="fas fa-sign-out-alt mr-2"></i>Đăng ký </a>
-				</li>';
-				}
-				?> </a>
-						</li>
-						
-					</ul>
-					<!-- //header lists -->
-				</div>
-			</div>
-		</div>
-	</div>
+	
 	<!-- modals -->
 	<!-- log in -->
 	<div class="modal fade" id="dangnhap" tabindex="-1" role="dialog" aria-hidden="true">
@@ -230,12 +178,44 @@ function connectDB_user($sql){
 						<!-- //search -->
 						<!-- cart details -->
 						<div class="col-2 top_nav_right text-center mt-sm-0 mt-2">
-							<div class="wthreecartaits wthreecartaits2 cart cart box_1">
+							<div class="ccc wthreecartaits wthreecartaits2 cart cart box_1">
 								<form action="#" method="post" class="last">
 									<input type="hidden" name="cmd" value="_cart">
 									<input type="hidden" name="display" value="1">
 									<button class="btn w3view-cart" type="submit" name="submit" value="">
 										<i class="fas fa-cart-arrow-down"></i>
+									</button>
+									<button class="btn w3view-cart" type="submit" name="submit" value="">
+									<a href="#" data-toggle="modal" data-target="#dangnhap" class="text-white">
+								 <?php 
+				if(isset($_SESSION['dangnhap_home'])){
+					echo '<div>
+					
+					<div class="dnc">xin chao quoc</div>
+					<ul class="dn">
+					<li class="text-center text-white">
+					<a href="./admin/dashboard.php">Admin </a></li>
+					<li><a href="index.php?quanly=giohang&dangxuat=1">Đăng xuất</a></li>
+					</ul>
+					</div>
+					';
+					
+					
+				
+				if($_SESSION['role']==1){
+					echo '';
+					
+				} else {
+					
+				}
+				}else{
+					echo 'Đăng nhập';
+					echo '<li class="text-center text-white">
+					<a href="#" data-toggle="modal" data-target="#dangky" class="text-white">
+						<i class="fas fa-sign-out-alt mr-2"></i>Đăng ký </a>
+				</li>';
+				}
+				?> </a>
 									</button>
 								</form>
 							</div>
