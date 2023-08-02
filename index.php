@@ -48,6 +48,8 @@
 </head>
 
 <body>
+	
+		
 	<?php
 	include('include/topbar.php'); 
 	include('include/menu.php');
@@ -79,6 +81,7 @@
 	 
 	include('include/footer.php'); 
 	?>
+
 	<!-- js-files -->
 	<!-- jquery -->
 	<script src="js/jquery-2.2.3.min.js"></script>

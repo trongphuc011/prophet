@@ -6,9 +6,9 @@
 				<!-- footer first section -->
 				<h2 class="footer-top-head-w3l font-weight-bold mb-2">Giới thiệu về chúng tôi</h2>
 				<p class="footer-main mb-4">
-					BO BỤI ĐEM ĐẾN PHONG CÁCH THỜI TRANG ĐƯỜNG PHỐ CHO MỌI NGƯỜI BỞI NHỮNG SẢN PHẨM CHẤT LƯỢNG 
+					PROPHET ĐEM ĐẾN PHONG CÁCH THỜI TRANG ĐƯỜNG PHỐ CHO MỌI NGƯỜI BỞI NHỮNG SẢN PHẨM CHẤT LƯỢNG 
 					VÀ CÓ Ý NGHĨA LỚN ĐỐI VỚI CỘNG ĐỒNG NHỮNG NGƯỜI YÊU NGHỆ THUẬT ĐƯỜNG PHỐ CŨNG NHƯ VĂN HÓA HIPHOP, ROCK,... NÓI CHUNG. <br>
-					SẢN PHẨM BO BỤI ĐƯỢC SẢN XUẤT VÀ GIA CÔNG BỞI NGƯỜI VIỆT VỚI NGUỒN NGUYÊN LIỆU CHẤT LƯỢNG QUỐC TẾ.
+					SẢN PHẨM PROPHET ĐƯỢC SẢN XUẤT VÀ GIA CÔNG BỞI NGƯỜI VIỆT VỚI NGUỒN NGUYÊN LIỆU CHẤT LƯỢNG QUỐC TẾ.
 					NHỮNG SẢN PHẨM CÓ Ý NGHĨA,TÍCH CỰC VÀ CÓ GIÁ TRỊ TINH THẦN CAO TRONG VIỆC ĐÓNG GÓP GIÚP CÁC NGHỆ SỸ TÀI NĂNG 
 					Ở MỌI LỨA TUỔI PHÁT TRIỂN CÁC CỘNG ĐỒNG VĂN HÓA TIỆM CẬN GIỚI TRẺ NÓI CHUNG.
 				</p>
