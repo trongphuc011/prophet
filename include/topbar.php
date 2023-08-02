@@ -191,6 +191,11 @@ function connectDB_user($sql){
 									</button>
 									<?php 
 				if(isset($_SESSION['dangnhap_home'])){
+					
+					
+					
+				
+				if($_SESSION['role']==1){
 					echo '<div class="dn">
 					
 					<a><img src="./images/user.avif" width="50"></a>
@@ -206,13 +211,20 @@ function connectDB_user($sql){
 					</div>
 					';
 					
-					
-				
-				if($_SESSION['role']==1){
-					echo '';
-					
 				} else {
+					echo '<div class="dn">
 					
+					<a><img src="./images/user.avif" width="50"></a>
+					<div class="dn-child">
+					<a href="#">Cập nhật thông tin</a>
+					<br>
+					<a href="index.php?quanly=xemdonhang">Xem đơn hàng</a>
+					<br>
+					
+					<a href="index.php?quanly=giohang&dangxuat=1">Đăng xuất</a>
+					</div>
+					</div>
+					';
 				}
 				}else{
 					echo '<button class="dn-hidden btn w3view-cart" type="submit" name="submit" value="">
