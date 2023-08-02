@@ -8,7 +8,7 @@
 		$danhmuc = $_POST['danhmuc'];
 		$chitiet = $_POST['chitiet'];
 		$mota = $_POST['mota'];
-		$path = '../uploads/';
+		$path = './uploads/';
 		
 		$hinhanh_tmp = $_FILES['hinhanh']['tmp_name'];
 		$sql_insert_product = mysqli_query($con,"INSERT INTO tbl_baiviet(tenbaiviet,tomtat,noidung,danhmuctin_id,baiviet_image) values ('$tenbaiviet','$mota','$chitiet','$danhmuc','$hinhanh')");
@@ -22,7 +22,7 @@
 		$danhmuc = $_POST['danhmuc'];
 		$chitiet = $_POST['chitiet'];
 		$mota = $_POST['mota'];
-		$path = '../uploads/';
+		$path = './uploads/';
 		if($hinhanh==''){
 			$sql_update_image = "UPDATE tbl_baiviet SET tenbaiviet='$tenbaiviet',noidung='$chitiet',tomtat='$mota',danhmuctin_id='$danhmuc' WHERE baiviet_id='$id_update'";
 		}else{
@@ -51,7 +51,7 @@
 	<div class="container">
 		<div class="row">
 		<?php
-			if(isset($_GET['quanly'])=='capnhat'){
+			if(isset($_GET['act'])=='capnhat'){
 				$id_capnhat = $_GET['capnhat_id'];
 				$sql_capnhat = mysqli_query($con,"SELECT * FROM tbl_baiviet WHERE baiviet_id='$id_capnhat'");
 				$row_capnhat = mysqli_fetch_array($sql_capnhat);
@@ -66,7 +66,7 @@
 					<input type="hidden" class="form-control" name="id_update" value="<?php echo $row_capnhat['baiviet_id'] ?>">
 					<label>Hình ảnh</label>
 					<input type="file" class="form-control" name="hinhanh"><br>
-					<img src="../uploads/<?php echo $row_capnhat['baiviet_image'] ?>" height="80" width="80"><br>
+					<img src="./uploads/<?php echo $row_capnhat['baiviet_image'] ?>" height="80" width="80"><br>
 					
 				
 					<label>Mô tả</label>
@@ -156,11 +156,11 @@
 					<tr>
 						<td><?php echo $i ?></td>
 						<td><?php echo $row_bv['tenbaiviet'] ?></td>
-						<td><img src="../uploads/<?php echo $row_bv['baiviet_image'] ?>" height="100" width="80"></td>
+						<td><img src="./uploads/<?php echo $row_bv['baiviet_image'] ?>" height="100" width="80"></td>
 
 						<td><?php echo $row_bv['tendanhmuc'] ?></td>
 						
-						<td><a href="?xoa=<?php echo $row_bv['baiviet_id'] ?>">Xóa</a> || <a href="xulybaiviet.php?quanly=capnhat&capnhat_id=<?php echo $row_bv['baiviet_id'] ?>">Cập nhật</a></td>
+						<td><a href="?xoa=<?php echo $row_bv['baiviet_id'] ?>">Xóa</a> || <a href="xulybaiviet.php?act=capnhat&capnhat_id=<?php echo $row_bv['baiviet_id'] ?>">Cập nhật</a></td>
 					</tr>
 				<?php
 					} 

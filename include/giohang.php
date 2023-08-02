@@ -48,12 +48,11 @@
  	$name = $_POST['name'];
  	$phone = $_POST['phone'];
  	$email = $_POST['email'];
- 	$password = md5($_POST['password']);
- 	$note = $_POST['note'];
+
  	$address = $_POST['address'];
  	$giaohang = $_POST['giaohang'];
  
- 	$sql_khachhang = mysqli_query($con,"INSERT INTO tbl_khachhang(name,phone,email,address,note,giaohang,password) values ('$name','$phone','$email','$address','$note','$giaohang','$password')");
+ 	$sql_khachhang = mysqli_query($con,"INSERT INTO tbl_khachhang(name,phone,email,address,giaohang) values ('$name','$phone','$email','$address','$giaohang')");
  	if($sql_khachhang){
  		$sql_select_khachhang = mysqli_query($con,"SELECT * FROM tbl_khachhang ORDER BY khachhang_id DESC LIMIT 1");
  		$mahang = rand(0,9999);
@@ -132,7 +131,7 @@
 								<td class="invert"><?php echo $i ?></td>
 								<td class="invert-image">
 									<a href="single.html">
-										<img src="images/<?php echo $row_fetch_giohang['hinhanh'] ?>" alt=" " height="120" class="img-responsive">
+										<img src="uploads/<?php echo $row_fetch_giohang['hinhanh'] ?>" alt=" "  class="img-responsive" style="width:200px; height:300px">
 									</a>
 								</td>
 								<td class="invert">
@@ -212,12 +211,7 @@
 									<div class="controls form-group">
 										<input type="text" class="form-control" placeholder="Email" name="email" required="">
 									</div>
-									<div class="controls form-group">
-										<input type="text" class="form-control" placeholder="Password" name="password" required="">
-									</div>
-									<div class="controls form-group">
-										<textarea style="resize: none;" class="form-control" placeholder="Ghi chú" name="note" required=""></textarea>  
-									</div>
+									
 									<div class="controls form-group">
 										<select class="option-w3ls" name="giaohang">
 											<option>Chọn hình thức giao hàng</option>

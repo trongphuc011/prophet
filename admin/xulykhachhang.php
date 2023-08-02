@@ -43,7 +43,7 @@
 						
 						<td><?php echo $row_khachhang['email'] ?></td>
 						<td><?php echo $row_khachhang['ngaythang'] ?></td>
-						<td><a href="?quanly=xemgiaodich&khachhang=<?php echo $row_khachhang['magiaodich'] ?>">Xem giao dịch</a></td>
+						<td><a href="index.php?act=xulykhachhang&khachhang=<?php echo $row_khachhang['magiaodich'] ?>">Xem giao dịch</a></td>
 					</tr>
 					 <?php
 					} 

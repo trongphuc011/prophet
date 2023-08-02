@@ -6,8 +6,14 @@
 		$huydon = '';
 		$magiaodich = '';
 	}
-	$sql_update_donhang = mysqli_query($con,"UPDATE tbl_donhang SET huydon='$huydon' WHERE mahang='$magiaodich'");
-	$sql_update_giaodich = mysqli_query($con,"UPDATE tbl_giaodich SET huydon='$huydon' WHERE magiaodich='$magiaodich'");
+	if (isset($_GET['act']) && $_GET['act'] == 'xemdonhang') {
+		if (isset($_GET['huydon']) && isset($_GET['magiaodich'])) {
+			$huydon = $_GET['huydon'];
+			$magiaodich = $_GET['magiaodich'];
+			$sql_update_donhang = mysqli_query($con, "UPDATE tbl_donhang SET huydon='$huydon' WHERE mahang='$magiaodich'");
+			$sql_update_giaodich = mysqli_query($con, "UPDATE tbl_giaodich SET huydon='$huydon' WHERE magiaodich='$magiaodich'");
+		}
+	}
 ?>
 <!-- top Products -->
 	<div class="ads-grid py-sm-5 py-4">

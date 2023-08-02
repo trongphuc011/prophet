@@ -3245,24 +3245,8 @@ div#testimonials h4.m-title {
     }
 }
 
-.ccc {
-    width: 500px !important;
-    
-}
 
-.dnc {
-    position: relative;
-}
 
-.dn {
-    position: absolute;
-    top: 100px;
-    display: none;
-}
-
-.dnc:hover .dn {
-    display: block;
-}
 
 
 

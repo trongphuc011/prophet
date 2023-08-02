@@ -1,3 +1,6 @@
+<?php
+include('include/slider.php');
+?>
 <!-- top Products -->
 <div class="ads-grid py-sm-5 py-4">
 		<div class="py-xl-4 py-lg-2">

@@ -1,6 +1,6 @@
 <?php 
 include('topbar.php');
-
+$act = null;
 if((isset($_GET['act'])) && ($_GET['act']!="")){
     $act =  $_GET['act'];
 }
@@ -23,6 +23,9 @@ switch($act){
 		case 'xulysanpham':
 			include "xulysanpham.php";		
 			break;
+	default:
+		
+		break;
 		
 }
 ?>

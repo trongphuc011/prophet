@@ -160,14 +160,14 @@ function connectDB_user($sql){
 				<div class="col-md-3 logo_agile">
 					<h1 class="text-center">
 						<a href="index.php" class="font-weight-bold font-italic">
-							<img style="width: 90px;" src="images/anhrong.jpg" alt=" " class="img-fluid">1    Prophet
+							<img style="width: 90px;" src="images/anhrong.jpg" alt=" " class="img-fluid">1     Prophet
 						</a>
 					</h1>
 				</div>
 				<!-- //logo -->
 				<!-- header-bot -->
 				<div class="col-md-9 header mt-4 mb-md-0 mb-4">
-					<div class="row">
+					<div class="row" style="flex-wrap:inherit !important">
 						<!-- search -->
 						<div class="col-10 agileits_search">
 							<form class="form-inline" action="index.php?quanly=timkiem" method="POST">
@@ -177,26 +177,32 @@ function connectDB_user($sql){
 						</div>
 						<!-- //search -->
 						<!-- cart details -->
-						<div class="col-2 top_nav_right text-center mt-sm-0 mt-2">
-							<div class="ccc wthreecartaits wthreecartaits2 cart cart box_1">
-								<form action="#" method="post" class="last">
+						<div class="">
+							<div class="wthreecartaits wthreecartaits2 cart cart box_1" style="width:; display:flex">
+							<a href="index.php?quanly=giohang"><button class="btn w3view-cart" type="submit" name="submit" value="">
+										<i class="fas fa-cart-arrow-down"></i>
+									</button></a>
+								<form style="display:inline-block" action="#" method="post" class="last">
 									<input type="hidden" name="cmd" value="_cart">
 									<input type="hidden" name="display" value="1">
-									<button class="btn w3view-cart" type="submit" name="submit" value="">
-										<i class="fas fa-cart-arrow-down"></i>
+									
+									
+								  
 									</button>
-									<button class="btn w3view-cart" type="submit" name="submit" value="">
-									<a href="#" data-toggle="modal" data-target="#dangnhap" class="text-white">
-								 <?php 
+									<?php 
 				if(isset($_SESSION['dangnhap_home'])){
-					echo '<div>
+					echo '<div class="dn">
 					
-					<div class="dnc">xin chao quoc</div>
-					<ul class="dn">
-					<li class="text-center text-white">
-					<a href="./admin/dashboard.php">Admin </a></li>
-					<li><a href="index.php?quanly=giohang&dangxuat=1">Đăng xuất</a></li>
-					</ul>
+					<a><img src="./images/user.avif" width="50"></a>
+					<div class="dn-child">
+					<a href="#">Cập nhật thông tin</a>
+					<br>
+					<a href="index.php?quanly=xemdonhang">Xem đơn hàng</a>
+					<br>
+					<a href="./admin/index.php">Admin</a>
+					<br>
+					<a href="index.php?quanly=giohang&dangxuat=1">Đăng xuất</a>
+					</div>
 					</div>
 					';
 					
@@ -209,15 +215,18 @@ function connectDB_user($sql){
 					
 				}
 				}else{
-					echo 'Đăng nhập';
+					echo '<button class="dn-hidden btn w3view-cart" type="submit" name="submit" value="">
+					<a href="#" data-toggle="modal" data-target="#dangnhap" class="text-white">
+						Đăng nhập
+				  </a>';
 					echo '<li class="text-center text-white">
 					<a href="#" data-toggle="modal" data-target="#dangky" class="text-white">
 						<i class="fas fa-sign-out-alt mr-2"></i>Đăng ký </a>
 				</li>';
 				}
-				?> </a>
-									</button>
+				?>
 								</form>
+								
 							</div>
 						</div>
 						<!-- //cart details -->

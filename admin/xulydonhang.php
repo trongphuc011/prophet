@@ -39,7 +39,7 @@ if(isset($_POST['capnhatdonhang'])){
 	<div class="container-fluid">
 		<div class="row">
 			 <?php
-			if(isset($_GET['quanly'])=='xemdonhang'){
+			if(isset($_GET['act'])=='xemdonhang'){
 				$mahang = $_GET['mahang'];
 				$sql_chitiet = mysqli_query($con,"SELECT * FROM tbl_donhang,tbl_sanpham WHERE tbl_donhang.sanpham_id=tbl_sanpham.sanpham_id AND tbl_donhang.mahang='$mahang'");
 				?>
@@ -76,7 +76,7 @@ if(isset($_POST['capnhatdonhang'])){
 						<td><?php echo $row_donhang['ngaythang'] ?></td>
 						<input type="hidden" name="mahang_xuly" value="<?php echo $row_donhang['mahang'] ?>">
 
-						<!-- <td><a href="?xoa=<?php echo $row_donhang['donhang_id'] ?>">Xóa</a> || <a href="?quanly=xemdonhang&mahang=<?php echo $row_donhang['mahang'] ?>">Xem đơn hàng</a></td> -->
+						<td><a href="?xoa=<?php echo $row_donhang['donhang_id'] ?>">Xóa</a> || <a href="index.php?act=xulydonhang&mahang=<?php echo $row_donhang['mahang'] ?>">Xem đơn hàng</a></td>
 					</tr>
 					 <?php
 					} 
@@ -139,13 +139,13 @@ if(isset($_POST['capnhatdonhang'])){
 						<td><?php echo $row_donhang['ngaythang'] ?></td>
 						<td><?php echo $row_donhang['note'] ?></td>
 						<td><?php if($row_donhang['huydon']==0){ }elseif($row_donhang['huydon']==1){
-							echo '<a href="xulydonhang.php?quanly=xemdonhang&mahang='.$row_donhang['mahang'].'&xacnhanhuy=2">Xác nhận hủy đơn</a>';
+							echo '<a href="index.php?act=xulydonhang&mahang='.$row_donhang['mahang'].'&xacnhanhuy=2">Xác nhận hủy đơn</a>';
 						}else{
 							echo 'Đã hủy';
 						} 
 						?></td>
 
-						<td><a href="?xoadonhang=<?php echo $row_donhang['mahang'] ?>">Xóa</a> || <a href="?quanly=xemdonhang&mahang=<?php echo $row_donhang['mahang'] ?>">Xem </a></td>
+						<td><a href="index.php?act=xulydonhang&xoadonhang=<?php echo $row_donhang['mahang'] ?>">Xóa</a> || <a href="index.php?act=xulydonhang&mahang=<?php echo $row_donhang['mahang'] ?>">Xem </a></td>
 					</tr>
 					 <?php
 					} 
