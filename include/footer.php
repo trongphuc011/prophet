@@ -6,9 +6,12 @@
 				<!-- footer first section -->
 				<h2 class="footer-top-head-w3l font-weight-bold mb-2">Giới thiệu về chúng tôi</h2>
 				<p class="footer-main mb-4">
-					If you're considering a new laptop, looking for a powerful new car stereo or shopping for a new HDTV, we make it easy to
-					find exactly what you need at a price you can afford. We offer Every Day Low Prices on TVs, laptops, cell phones, tablets
-					and iPads, video games, desktop computers, cameras and camcorders, audio, video and more.</p>
+					BO BỤI ĐEM ĐẾN PHONG CÁCH THỜI TRANG ĐƯỜNG PHỐ CHO MỌI NGƯỜI BỞI NHỮNG SẢN PHẨM CHẤT LƯỢNG 
+					VÀ CÓ Ý NGHĨA LỚN ĐỐI VỚI CỘNG ĐỒNG NHỮNG NGƯỜI YÊU NGHỆ THUẬT ĐƯỜNG PHỐ CŨNG NHƯ VĂN HÓA HIPHOP, ROCK,... NÓI CHUNG. <br>
+					SẢN PHẨM BO BỤI ĐƯỢC SẢN XUẤT VÀ GIA CÔNG BỞI NGƯỜI VIỆT VỚI NGUỒN NGUYÊN LIỆU CHẤT LƯỢNG QUỐC TẾ.
+					NHỮNG SẢN PHẨM CÓ Ý NGHĨA,TÍCH CỰC VÀ CÓ GIÁ TRỊ TINH THẦN CAO TRONG VIỆC ĐÓNG GÓP GIÚP CÁC NGHỆ SỸ TÀI NĂNG 
+					Ở MỌI LỨA TUỔI PHÁT TRIỂN CÁC CỘNG ĐỒNG VĂN HÓA TIỆM CẬN GIỚI TRẺ NÓI CHUNG.
+				</p>
 				<!-- //footer first section -->
 				<!-- footer second section -->
 				<div class="row w3l-grids-footer border-top border-bottom py-sm-4 py-3">
