@@ -28,7 +28,7 @@
 	<div class="container">
 		<div class="row">
 			<?php
-			if(isset($_GET['quanly'])=='capnhat'){
+			if(isset($_GET['capnhat'])){
 				$id_capnhat = $_GET['id'];
 				$sql_capnhat = mysqli_query($con,"SELECT * FROM tbl_category WHERE category_id='$id_capnhat'");
 				$row_capnhat = mysqli_fetch_array($sql_capnhat);
@@ -77,7 +77,7 @@
 					<tr>
 						<td><?php echo $i; ?></td>
 						<td><?php echo $row_category['category_name'] ?></td>
-						<td><a href="?xoa=<?php echo $row_category['category_id'] ?>">Xóa</a> || <a href="?quanly=capnhat&id=<?php echo $row_category['category_id'] ?>">Cập nhật</a></td>
+						<td><a href="index.php?act=xulydanhmuc&xoa=<?php echo $row_category['category_id'] ?>">Xóa</a> || <a href="index.php?act=xulydanhmuc&capnhat&id=<?php echo $row_category['category_id'] ?>">Cập nhật</a></td>
 					</tr>
 					<?php
 					} 
