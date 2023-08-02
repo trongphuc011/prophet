@@ -25,7 +25,9 @@
 								<?php
 								if(isset($_SESSION['dangnhap_home'])){
 									echo 'Đơn hàng : '.$_SESSION['dangnhap_home'];
-								} 
+									
+								}
+								 
 								?>
 							<div class="col-md-12">
 								
