@@ -22,7 +22,7 @@
  	// }đsvds
 
  }elseif(isset($_POST['capnhatsoluong'])){
- 	
+	if (isset($_POST['product_id']) && is_array($_POST['product_id'])) {
  	for($i=0;$i<count($_POST['product_id']);$i++){
  		$sanpham_id = $_POST['product_id'][$i];
  		$soluong = $_POST['soluong'][$i];
@@ -32,6 +32,7 @@
  			$sql_update = mysqli_query($con,"UPDATE tbl_giohang SET soluong='$soluong' WHERE sanpham_id='$sanpham_id'");
  		}
  	}
+}
 
  }elseif(isset($_GET['xoa'])){
  	$id = $_GET['xoa'];

@@ -51,86 +51,91 @@
 	<div class="container">
 		<div class="row">
 		<?php
-			if(isset($_GET['act'])=='capnhat'){
-				$id_capnhat = $_GET['capnhat_id'];
-				$sql_capnhat = mysqli_query($con,"SELECT * FROM tbl_baiviet WHERE baiviet_id='$id_capnhat'");
-				$row_capnhat = mysqli_fetch_array($sql_capnhat);
-				$id_category_1 = $row_capnhat['danhmuctin_id'];
-				?>
-				<div class="col-md-4">
-				<h4>Cập nhật bài viết</h4>
-				
-				<form action="" method="POST" enctype="multipart/form-data">
-					<label>Tên bài viết</label>
-					<input type="text" class="form-control" name="tenbaiviet" value="<?php echo $row_capnhat['tenbaiviet'] ?>"><br>
-					<input type="hidden" class="form-control" name="id_update" value="<?php echo $row_capnhat['baiviet_id'] ?>">
-					<label>Hình ảnh</label>
-					<input type="file" class="form-control" name="hinhanh"><br>
-					<img src="../uploads/<?php echo $row_capnhat['baiviet_image'] ?>" height="80" width="80"><br>
-					
-				
-					<label>Mô tả</label>
-					<textarea class="form-control" rows="10" name="mota"><?php echo $row_capnhat['tomtat'] ?></textarea><br>
-					<label>Chi tiết</label>
-					<textarea class="form-control" rows="10" name="chitiet"><?php echo $row_capnhat['noidung'] ?></textarea><br>
-					<label>Danh mục</label>
-					<?php
-					$sql_danhmuc = mysqli_query($con,"SELECT * FROM tbl_danhmuc_tin ORDER BY danhmuctin_id DESC"); 
-					?>
-					<select name="danhmuc" class="form-control">
-						<option value="0">-----Chọn danh mục-----</option>
-						<?php
-						while($row_danhmuc = mysqli_fetch_array($sql_danhmuc)){
-							if($id_category_1==$row_danhmuc['danhmuctin_id']){
-						?>
-						<option selected value="<?php echo $row_danhmuc['danhmuctin_id'] ?>"><?php echo $row_danhmuc['tendanhmuc'] ?></option>
-						<?php 
-							}else{
-						?>
-						<option value="<?php echo $row_danhmuc['danhmuctin_id'] ?>"><?php echo $row_danhmuc['tendanhmuc'] ?></option>
-						<?php
-							}
-						}
-						?>
-					</select><br>
-					<input type="submit" name="capnhatbaiviet" value="Cập nhật bài viết" class="btn btn-default">
-				</form>
-				</div>
+			if (isset($_GET['act']) && $_GET['act'] == 'capnhat' && isset($_GET['capnhat_id'])) {
+    $id_capnhat = $_GET['capnhat_id'];
+    // Tiếp tục xử lý cập nhật bài viết ở đây
+	if(isset($_GET['act'])=='capnhat'){
+		$id_capnhat = $_GET['capnhat_id'];
+		$sql_capnhat = mysqli_query($con,"SELECT * FROM tbl_baiviet WHERE baiviet_id='$id_capnhat'");
+		$row_capnhat = mysqli_fetch_array($sql_capnhat);
+		$id_category_1 = $row_capnhat['danhmuctin_id'];
+		?>
+		<div class="col-md-4">
+		<h4>Cập nhật bài viết</h4>
+		
+		<form action="" method="POST" enctype="multipart/form-data">
+			<label>Tên bài viết</label>
+			<input type="text" class="form-control" name="tenbaiviet" value="<?php echo $row_capnhat['tenbaiviet'] ?>"><br>
+			<input type="hidden" class="form-control" name="id_update" value="<?php echo $row_capnhat['baiviet_id'] ?>">
+			<label>Hình ảnh</label>
+			<input type="file" class="form-control" name="hinhanh"><br>
+			<img src="../uploads/<?php echo $row_capnhat['baiviet_image'] ?>" height="80" width="80"><br>
+			
+		
+			<label>Mô tả</label>
+			<textarea class="form-control" rows="10" name="mota"><?php echo $row_capnhat['tomtat'] ?></textarea><br>
+			<label>Chi tiết</label>
+			<textarea class="form-control" rows="10" name="chitiet"><?php echo $row_capnhat['noidung'] ?></textarea><br>
+			<label>Danh mục</label>
 			<?php
-			}else{
-				?> 
-				<div class="col-md-4">
-				<h4>Thêm bài viết</h4>
-				
-				<form action="" method="POST" enctype="multipart/form-data">
-					<label>Tên sản phẩm</label>
-					<input type="text" class="form-control" name="tenbaiviet" placeholder="Tên bài viết"><br>
-					<label>Hình ảnh</label>
-					<input type="file" class="form-control" name="hinhanh"><br>
-
-					<label>Mô tả</label>
-					<textarea class="form-control" name="mota"></textarea><br>
-					<label>Chi tiết</label>
-					<textarea class="form-control" name="chitiet"></textarea><br>
-					<label>Danh mục</label>
-					<?php
-					$sql_danhmuc = mysqli_query($con,"SELECT * FROM tbl_danhmuc_tin ORDER BY danhmuctin_id DESC"); 
-					?>
-					<select name="danhmuc" class="form-control">
-						<option value="0">-----Chọn danh mục-----</option>
-						<?php
-						while($row_danhmuc = mysqli_fetch_array($sql_danhmuc)){
-						?>
-						<option value="<?php echo $row_danhmuc['danhmuctin_id'] ?>"><?php echo $row_danhmuc['tendanhmuc'] ?></option>
-						<?php 
-						}
-						?>
-					</select><br>
-					<input type="submit" name="thembaiviet" value="Thêm bài viết" class="btn btn-default">
-				</form>
-				</div>
+			$sql_danhmuc = mysqli_query($con,"SELECT * FROM tbl_danhmuc_tin ORDER BY danhmuctin_id DESC"); 
+			?>
+			<select name="danhmuc" class="form-control">
+				<option value="0">-----Chọn danh mục-----</option>
 				<?php
-			} 
+				while($row_danhmuc = mysqli_fetch_array($sql_danhmuc)){
+					if($id_category_1==$row_danhmuc['danhmuctin_id']){
+				?>
+				<option selected value="<?php echo $row_danhmuc['danhmuctin_id'] ?>"><?php echo $row_danhmuc['tendanhmuc'] ?></option>
+				<?php 
+					}else{
+				?>
+				<option value="<?php echo $row_danhmuc['danhmuctin_id'] ?>"><?php echo $row_danhmuc['tendanhmuc'] ?></option>
+				<?php
+					}
+				}
+				?>
+			</select><br>
+			<input type="submit" name="capnhatbaiviet" value="Cập nhật bài viết" class="btn btn-default">
+		</form>
+		</div>
+	<?php
+	}else{
+		?> 
+		<div class="col-md-4">
+		<h4>Thêm bài viết</h4>
+		
+		<form action="" method="POST" enctype="multipart/form-data">
+			<label>Tên sản phẩm</label>
+			<input type="text" class="form-control" name="tenbaiviet" placeholder="Tên bài viết"><br>
+			<label>Hình ảnh</label>
+			<input type="file" class="form-control" name="hinhanh"><br>
+
+			<label>Mô tả</label>
+			<textarea class="form-control" name="mota"></textarea><br>
+			<label>Chi tiết</label>
+			<textarea class="form-control" name="chitiet"></textarea><br>
+			<label>Danh mục</label>
+			<?php
+			$sql_danhmuc = mysqli_query($con,"SELECT * FROM tbl_danhmuc_tin ORDER BY danhmuctin_id DESC"); 
+			?>
+			<select name="danhmuc" class="form-control">
+				<option value="0">-----Chọn danh mục-----</option>
+				<?php
+				while($row_danhmuc = mysqli_fetch_array($sql_danhmuc)){
+				?>
+				<option value="<?php echo $row_danhmuc['danhmuctin_id'] ?>"><?php echo $row_danhmuc['tendanhmuc'] ?></option>
+				<?php 
+				}
+				?>
+			</select><br>
+			<input type="submit" name="thembaiviet" value="Thêm bài viết" class="btn btn-default">
+		</form>
+		</div>
+		<?php
+	} 
+}
+		
 			
 				?>
 			<div class="col-md-8">
