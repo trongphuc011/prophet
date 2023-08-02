@@ -26,14 +26,5 @@ $sql_slider =  mysqli_query($con,"SELECT * FROM tbl_slider Where slider_active='
                     <label for="radio4" class="manual-btn"></label>
                 </div>
 
-                <div class="title">
-                    <span>Home to the </span>
-                    <span>Best independent </span>
-                    <span>Brands and vintage </span>
-                    <span>Boutiques </span>
-                    <ul>
-                        <li><a href="#">Shop Women</a></li>
-                        <li><a href="#">Shop Men</a></li>
-                    </ul>
-                </div>
+               
             </div>
