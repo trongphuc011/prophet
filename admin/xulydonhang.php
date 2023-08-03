@@ -39,9 +39,12 @@ if(isset($_POST['capnhatdonhang'])){
 	<div class="container-fluid">
 		<div class="row">
 			 <?php
-			if(isset($_GET['act'])=='xemdonhang'){
+			 	
+				 if(isset($_GET['act']) && $_GET['act'] == 'xulydonhang' && isset($_GET['mahang'])) {
+			
 				$mahang = $_GET['mahang'];
 				$sql_chitiet = mysqli_query($con,"SELECT * FROM tbl_donhang,tbl_sanpham WHERE tbl_donhang.sanpham_id=tbl_sanpham.sanpham_id AND tbl_donhang.mahang='$mahang'");
+				
 				?>
 				<div class="col-md-7">
 				<p>Xem chi tiết đơn hàng</p>
@@ -93,10 +96,12 @@ if(isset($_POST['capnhatdonhang'])){
 				</div>  
 			<?php
 			}else{
+				
 				?> 
 				
 				<div class="col-md-7">
 					<p>Đơn hàng</p>
+					<p>Vui lòng chọn đơn hàng cần xem</p>
 				</div>  
 				<?php
 			} 
