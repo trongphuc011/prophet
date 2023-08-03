@@ -3243,6 +3243,10 @@ div#testimonials h4.m-title {
     .occasion-cart .snipcart-details {
         width: 45%;
     }
+
+    .dn a img{
+        width: 50px;
+    }
 }
 
 

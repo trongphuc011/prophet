@@ -87,6 +87,7 @@ if(isset($_POST['capnhatdonhang'])){
 				</table>
 
 				<select class="form-control" name="xuly">
+				<option value="2">Đã xác nhận hủy</option>
 					<option value="1">Đã xử lý | Giao hàng</option>
 					<option value="0">Chưa xử lý</option>
 				</select><br>
