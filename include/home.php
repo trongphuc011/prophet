@@ -37,7 +37,11 @@ include('include/slider.php');
 										</div>
 										<div class="item-info-product text-center border-top mt-4">
 											<h4 class="pt-1">
-												<a href="?quanly=chitietsp&id=<?php echo $row_sanpham['sanpham_id'] ?>"><?php echo $row_sanpham['sanpham_name'] ?></a>
+												<a href="?quanly=chitietsp&id=<?php echo $row_sanpham['sanpham_id'] ?>" style="display: inline-block;
+            width: 200px; /* Độ rộng tùy ý */
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;"><?php echo $row_sanpham['sanpham_name'] ?></a>
 											</h4>
 											<div class="info-product-price my-2">
 												<span class="item_price"><?php echo number_format($row_sanpham['sanpham_giakhuyenmai']).'vnđ' ?></span>

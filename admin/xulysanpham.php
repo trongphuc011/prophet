@@ -177,7 +177,7 @@
 						<td><?php echo $row_sp['category_name'] ?></td>
 						<td><?php echo number_format($row_sp['sanpham_gia']).'vnđ' ?></td>
 						<td><?php echo number_format($row_sp['sanpham_giakhuyenmai']).'vnđ' ?></td>
-						<td><a href="?xoa=<?php echo $row_sp['sanpham_id'] ?>">Xóa</a> || <a href="xulysanpham.php?quanly=capnhat&capnhat_id=<?php echo $row_sp['sanpham_id'] ?>">Cập nhật</a></td>
+						<td><a href="?xoa=<?php echo $row_sp['sanpham_id'] ?>">Xóa</a> || <a href="index.php?act=xulysanpham&quanly=capnhat&capnhat_id=<?php echo $row_sp['sanpham_id'] ?>">Cập nhật</a></td>
 					</tr>
 				<?php
 					} 

@@ -28,7 +28,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" style="background:#333856">
 
             <!-- Sidebar - Brand -->
             <div class="sidebar-brand d-flex align-items-center justify-content-center" >
@@ -47,7 +47,7 @@
             <!-- Heading -->
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item" >
                 <a class="nav-link collapsed bg-gradient-warning" href="index.php?act=xulydonhang" >
                     <span>Đơn hàng</span>
                 </a>
@@ -173,3 +173,11 @@
 </body>
 
 </html>
+
+<style>
+    .sidebar-dark .nav-item .nav-link {
+    background:#333856 !important;
+    color:white;
+    
+}
+</style>

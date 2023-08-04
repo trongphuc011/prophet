@@ -198,7 +198,7 @@ function connectDB_user($sql){
 				if($_SESSION['role']==1){
 					echo '<div class="dn">
 					
-					<a><img src="./images/user.avif" ></a>
+					<a><img src="./images/user.avif" width="40px"></a>
 					<div class="dn-child">
 					<a href="index.php?quanly=thongtin">Cập nhật thông tin</a>
 					<br>
@@ -214,7 +214,7 @@ function connectDB_user($sql){
 				} else {
 					echo '<div class="dn">
 					
-					<a><img  src="./images/user.avif" ></a>
+					<a><img  src="./images/user.avif"  width="40px" ></a>
 					<div class="dn-child">
 					<a href="#">Cập nhật thông tin</a>
 					<br>
