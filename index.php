@@ -75,7 +75,10 @@
 		include('include/chitiettin.php');
 	}elseif ($tam=='xemdonhang') {
 		include('include/xemdonhang.php');
-	}else{
+	}elseif ($tam=='thongtin') {
+		include('include/thongtin.php');
+	}
+	else{
 		include('include/home.php'); 
 	}
 	 
