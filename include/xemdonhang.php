@@ -71,7 +71,7 @@ if(isset($_POST["editProduct"])&&($_POST["editProduct"])){
 								}else{
 									$id_khachhang = '';
 								}
-								$sql_select = mysqli_query($con,"SELECT * FROM tbl_giaodich WHERE tbl_giaodich.khachhang_id GROUP BY tbl_giaodich.magiaodich"); 
+								$sql_select = mysqli_query($con, "SELECT * FROM tbl_giaodich WHERE tbl_giaodich.khachhang_id = {$_SESSION['khachhang_id']} GROUP BY tbl_giaodich.magiaodich");
 								?> 
 								<table class="table table-bordered ">
 									<tr>
