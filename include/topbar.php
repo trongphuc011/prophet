@@ -216,7 +216,7 @@ function connectDB_user($sql){
 					<a><img width="50px" src="./images/user.avif" ></a>
 					</div>
 					<div class="dn-child">
-					<a href="#">Cập nhật thông tin</a>
+					<a href="index.php?quanly=thongtin">Cập nhật thông tin</a>
 					<br>
 					<a href="index.php?quanly=xemdonhang">Xem đơn hàng</a>
 					<br>
