@@ -8,7 +8,7 @@ include('include/slider.php');
 			<h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
 				<h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3"></h3>
 			<!-- //tittle heading -->
-			<div class="row">
+			<div class="row  m-0 p-0">
 				<!-- product left -->
 				<div class="agileinfo-ads-display col-lg-9">
 					<div class="wrapper">
@@ -18,7 +18,7 @@ include('include/slider.php');
 						?>
 						<!-- first section -->
 						<div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
-						<h2 style="margin-top:30px;"><?php echo 'Tất cả sản phẩm' ?>
+						<h2 style="margin-top:30px;" ><?php echo 'Tất cả sản phẩm' ?>
 							<div class="row">
 								<?php
 								$sql_product = mysqli_query($con,"SELECT * FROM tbl_sanpham ORDER BY sanpham_id DESC");
@@ -27,11 +27,11 @@ include('include/slider.php');
 								?>
 								<div class="col-md-3 product-men mt-5">
 									<div class="men-pro-item simpleCart_shelfItem">
-										<div class="men-thumb-item text-center">
+										<div class="men-thumb-item  text-center">
 											<img style="width: 300px; height:400px;" src="./uploads/<?php echo $row_sanpham['sanpham_image'] ?>" alt="">
 											<div class="men-cart-pro">
-												<div class="inner-men-cart-pro">
-													<a href="?quanly=chitietsp&id=<?php echo $row_sanpham['sanpham_id'] ?>" class="link-product-add-cart">Xem sản phẩm</a>
+												<div class="inner-men-cart-pro ">
+													<a href="?quanly=chitietsp&id=<?php echo $row_sanpham['sanpham_id'] ?>" class="link-product-add-cart ">Xem sản phẩm</a>
 												</div>
 											</div>
 										</div>
