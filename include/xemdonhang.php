@@ -32,15 +32,15 @@ if(isset($_POST["editProduct"])&&($_POST["editProduct"])){
     while($row_khachhang = mysqli_fetch_array($sql_khachhang)){ 
 ?>
 <div class="container" style="display:flex">
-<div style="display:flex;width:30%; margin-right:20px; margin-top:10px;flex-direction: column;" >
-<div style="display:flex">
-<a><img src="./images/user.avif" width="50"></a>
-<h4 style="padding-left:20px;padding-top:5px"><?php echo $row_khachhang['name']?><p>sửa hồ sơ</p></h4>
-</div>
-<div style="margin-top:30px"><h5><a href="index.php?quanly=thongtin">Tài khoản của tôi</a></h5>
-<br>
-<h5><a style="" href="index.php?quanly=xemdonhang">đơn mua</a></h5>
-</div>
+	<div style="display:flex;width:30%; margin-right:20px; margin-top:10px;flex-direction: column;" >
+		<div style="display:flex">
+		<a><img src="./images/user.avif" width="50"></a>
+		<h4 style="padding-left:20px;padding-top:5px"><?php echo $row_khachhang['name']?><p>sửa hồ sơ</p></h4>
+		</div>
+	<div style="margin-top:30px"><h5><a href="index.php?quanly=thongtin">Tài khoản của tôi</a></h5>
+	<br>
+	<h5><a style="" href="index.php?quanly=xemdonhang">đơn mua</a></h5>
+	</div>
 </div>
 
 <div style="width:100%; box-shadow: 0px 0px 10px 10px #e4e4e4; margin-top:30px">
