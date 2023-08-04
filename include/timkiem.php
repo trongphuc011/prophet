@@ -28,7 +28,7 @@
 								<div class="col-md-4 product-men mt-5">
 									<div class="men-pro-item simpleCart_shelfItem">
 										<div class="men-thumb-item text-center">
-											<img stye="width: 200px ;" src="uploads/<?php echo $row_sanpham['sanpham_image'] ?>" alt="">
+											<img style="width: 400px;" src="uploads/<?php echo $row_sanpham['sanpham_image'] ?>" alt="">
 											<div class="men-cart-pro">
 												<div class="inner-men-cart-pro">
 													<a href="?quanly=chitietsp&id=<?php echo $row_sanpham['sanpham_id'] ?>" class="link-product-add-cart">Xem sản phẩm</a>
