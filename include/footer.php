@@ -1,6 +1,7 @@
 
 	<!-- footer -->
 	<footer>
+		<div style="background:black; width:100%; height:20px; margin-top:40px"></div>
 		<div class="footer-top-first">
 			<div class="container py-md-5 py-sm-4 py-3">
 				<!-- footer first section -->
