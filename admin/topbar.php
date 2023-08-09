@@ -66,6 +66,9 @@
 				<a class="nav-link collapsed bg-gradient-warning" href="index.php?act=xulykhachhang" >
                     <span>Khách hàng</span>
                 </a>
+                <a class="nav-link collapsed bg-gradient-warning" href="index.php?act=thongke" >
+                    <span>Thống kê</span>
+                </a>
                 <a class="nav-link collapsed bg-gradient-warning" href="../index.php" >
                     <span>Về trang chủ</span>
                 </a>
@@ -122,6 +125,8 @@
                         case 'xulysanpham':
                             include "xulysanpham.php";		
                             break;
+                        case 'thongke':
+                            include "thongke.php";
                     default:
                         
                         break;
