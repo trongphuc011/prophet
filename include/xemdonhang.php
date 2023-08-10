@@ -35,7 +35,7 @@ if(isset($_POST["editProduct"])&&($_POST["editProduct"])){
 	<div style="display:flex;width:30%; margin-right:20px; margin-top:10px;flex-direction: column;" >
 		<div style="display:flex">
 		<a><img src="./images/user.avif" width="50"></a>
-		<h4 style="padding-left:20px;padding-top:5px"><?php echo $row_khachhang['name']?><p>sửa hồ sơ</p></h4>
+		<h4 style="padding-left:20px;padding-top:5px"><?php echo $row_khachhang['name']?></h4>
 		</div>
 	<div style="margin-top:30px"><h5><a href="index.php?quanly=thongtin">Tài khoản của tôi</a></h5>
 	<br>

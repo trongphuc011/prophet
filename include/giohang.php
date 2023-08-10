@@ -1,4 +1,8 @@
+
+
 <?php
+
+
  if(isset($_POST['themgiohang'])){
  	$tensanpham = $_POST['tensanpham'];
  	$sanpham_id = $_POST['sanpham_id'];
@@ -156,7 +160,7 @@
 
 							</tr>
 							<tr>
-								<td colspan="7"><input type="submit" class="btn btn-success" value="Cập nhật giỏ hàng" name="capnhatsoluong">
+								<td colspan="7"><input type="submit" class="btn btn-primary" value="Cập nhật giỏ hàng" name="capnhatsoluong">
 								<?php 
 								$sql_giohang_select = mysqli_query($con,"SELECT * FROM tbl_giohang");
 								$count_giohang_select = mysqli_num_rows($sql_giohang_select);
@@ -170,7 +174,6 @@
 								<?php 
 							}
 								?>
-								<input type="submit" class="btn btn-primary" value="Thanh toán giỏ hàng" name="thanhtoandangnhap">
 		
 								<?php
 								} 
@@ -178,12 +181,134 @@
 								
 								</td>
 							
-							</tr>
-						</tbody>
-					</table>
+								</tr>
+							</tbody>
+						</table>
+						<?php 
+
+							if(isset($_POST["editProduct"])&&($_POST["editProduct"])){
+
+
+								$name=$_POST["name"];
+								$email=$_POST["email"];
+								$phone=$_POST["phone"];
+								$address=$_POST["address"];
+								$sql_upload = mysqli_query($con, "UPDATE tbl_khachhang SET name='$name', email='$email', phone = '$phone', address='$address' WHERE khachhang_id = {$_SESSION['khachhang_id']}");
+
+
+
+							}
+
+								$sql_khachhang = mysqli_query($con,"SELECT * FROM tbl_khachhang where khachhang_id = {$_SESSION['khachhang_id']}");
+								
+								while($row_khachhang = mysqli_fetch_array($sql_khachhang)){ 
+							?>
+						<div class="colorlib-product">
+							<div class="container">
+								<div class="row row-pb-lg">
+								</div>
+								<div class="row">
+									<div class="col-lg-8">
+										<form method="post" class="colorlib-form">
+											<h2>Thông tin  <a href="index.php?quanly=thongtin" class="text-primary">(chỉnh sửa)</a> </h2>
+											<div class="row">
+												<div class="col-md-12">
+													<div class="form-group">
+														<label for="companyname">Tên của bạn</label>
+														<input type="text" class="form-control" name="name" value="<?php echo isset($_POST['name']) ? $_POST['name'] : $row_khachhang['name']; ?>" readonly>
+														<?php if (isset($errors["name"])) { ?>
+															<p class="text-danger"><?php echo $errors["name"]; ?></p>
+														<?php } ?>
+													</div>
+										</div>
+
+										<div class="col-md-12">
+													<div class="form-group">
+														<label for="fname">Địa chỉ</label>
+														<input type="text" class="form-control" name="address" value="<?php echo isset($_POST['address']) ? $_POST['address'] : $row_khachhang['address']; ?>" readonly>
+														<?php if (isset($errors["address"])) { ?>
+															<p class="text-danger"><?php echo $errors["address"]; ?></p>
+														<?php } ?>
+													</div>
+											
+										</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label for="email">Địa chỉ email</label>
+														<input type="text" class="form-control" name="email" value="<?php echo $row_khachhang['email']; ?>" readonly>
+
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label for="Phone">Số điện thoại</label>
+														<input type="text" class="form-control" name="phone" value="<?php echo isset($_POST['phone']) ? $_POST['phone'] : $row_khachhang['phone']; ?>" readonly>
+														<?php if (isset($errors["phone"])) { ?>
+															<p class="text-danger"><?php echo $errors["phone"]; ?></p>
+														<?php } ?>
+													</div>
+												</div>
+									</div>
+									<?php }?>
+									</form>
+									</div>
+
+									<div class="col-lg-4">
+										<div class="row">
+											<div class="col-md-12">
+												<div class="cart-detail">
+													<h2>Thành tiền</h2>
+													<h4>
+													<?php echo number_format($total).'vnđ' ?>
+													</h4>
+												</div>
+										</div>
+
+										<div class="w-100"></div>
+
+										<div class="col-md-12">
+												<div class="cart-detail">
+													<h2>Phương thức</h2>
+													<div class="form-group">
+														<div class="col-md-12">
+															<div class="radio">
+																<label><input type="radio" name="optradio" disabled>Thanh toán Banking</label>
+															</div>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-md-12">
+															<div class="radio">
+																<label><input type="radio" name="optradio" checked> Thanh toán tiền mặt</label>
+															</div>
+														</div>
+													</div>
+
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12 text-center">
+											<input type="submit" class="btn btn-primary" value="Thanh toán giỏ hàng" name="thanhtoandangnhap">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</form>
 				</div>
 			</div>
+			<div id="page">
+		
+	</div>
+			<!-- thông báo thanh toán thành công: -->
+			<?php
+				if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["thanhtoandangnhap"])) {
+					echo '<div class="alert alert-success">Đặt hàng thành công</div>';
+				}
+			?>
+
 			<?php
 			if(!isset($_SESSION['dangnhap_home'])){ 
 			?>
@@ -245,4 +370,5 @@
 			?>
 		</div>
 	</div>
+	
 	<!-- //checkout page -->

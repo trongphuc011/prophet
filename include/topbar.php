@@ -191,10 +191,6 @@ function connectDB_user($sql){
 									</button>
 									<?php 
 				if(isset($_SESSION['dangnhap_home'])){
-					
-					
-					
-				
 				if($_SESSION['role']==1){
 					echo '<div class="dn">
 					<a><img width="50px" src="./images/user.avif" ></a>
