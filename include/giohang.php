@@ -1,11 +1,25 @@
 <?php
 
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["thanhtoandangnhap"])) {
+	echo '<div class="alert alert-success">Đặt hàng thành công</div>';
 
+	
+}
+?>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["thanhtoan"])) {
+	echo '<div class="alert alert-success">Đặt hàng thành công</div>';
+
+	
+}
+
+// session_destroy();
 
 if(isset($_GET['increase'])){
 	$index = $_GET['increase'];
-	if($_SESSION['giohang'][$index]['sl']>1){
-		$_SESSION['giohang'][$index]['sl']-= 1;
+
+	if($_SESSION['giohang'][$index]['sanpham_soluong']>1){
+		$_SESSION['giohang'][$index]['sanpham_soluong']-= 1;
 		
 		
 	}
@@ -13,7 +27,8 @@ if(isset($_GET['increase'])){
 }
 if(isset($_GET['decrease'])){
 	$index = $_GET['decrease'];
-	$_SESSION['giohang'][$index]['sl']+= 1;
+
+	$_SESSION['giohang'][$index]['sanpham_soluong']+= 1;
 	
 }
 
@@ -65,17 +80,18 @@ elseif(isset($_POST['capnhatsoluong'])){
  		$mahang = rand(0,9999);
  		$row_khachhang = mysqli_fetch_array($sql_select_khachhang);
  		$khachhang_id = $row_khachhang['khachhang_id'];
- 		$_SESSION['dangnhap_home'] = $row_khachhang['name'];
+ 		
  		$_SESSION['khachhang_id'] = $khachhang_id;
- 		for($i=0;$i<count($_POST['thanhtoan_product_id']);$i++){
-	 		$sanpham_id = $_POST['thanhtoan_product_id'][$i];
-	 		$soluong = $_POST['thanhtoan_soluong'][$i];
+ 		if (isset($_POST['thanhtoan_product_id']) && is_array($_POST['thanhtoan_product_id'])) {
+			for ($i = 0; $i < count($_POST['thanhtoan_product_id']); $i++) {
+				$sanpham_id = $_POST['thanhtoan_product_id'][$i];
+				$soluong = $_POST['thanhtoan_soluong'][$i];
 	 		$sql_donhang = mysqli_query($con,"INSERT INTO tbl_donhang(sanpham_id,khachhang_id,soluong,mahang) values ('$sanpham_id','$khachhang_id','$soluong','$mahang')");
 	 		$sql_giaodich = mysqli_query($con,"INSERT INTO tbl_giaodich(sanpham_id,soluong,magiaodich,khachhang_id) values ('$sanpham_id','$soluong','$mahang','$khachhang_id')");
-	 		$sql_delete_thanhtoan = mysqli_query($con,"DELETE FROM tbl_giohang WHERE sanpham_id='$sanpham_id'");
+	 	
  		}
 
- 	}
+ 	}}
  }elseif(isset($_POST['thanhtoandangnhap'])){
 
  	$khachhang_id = $_SESSION['khachhang_id'];
@@ -85,7 +101,7 @@ elseif(isset($_POST['capnhatsoluong'])){
 	 		$soluong = $_POST['thanhtoan_soluong'][$i];
 	 		$sql_donhang = mysqli_query($con,"INSERT INTO tbl_donhang(sanpham_id,khachhang_id,soluong,mahang) values ('$sanpham_id','$khachhang_id','$soluong','$mahang')");
 	 		$sql_giaodich = mysqli_query($con,"INSERT INTO tbl_giaodich(sanpham_id,soluong,magiaodich,khachhang_id) values ('$sanpham_id','$soluong','$mahang','$khachhang_id')");
-	 		$sql_delete_thanhtoan = mysqli_query($con,"DELETE FROM tbl_giohang WHERE sanpham_id='$sanpham_id'");
+	 		
  		}
 
  	
@@ -131,10 +147,12 @@ elseif(isset($_POST['capnhatsoluong'])){
 			
 							
 						if(isset($_SESSION['giohang']))  foreach($_SESSION['giohang']  as $index => $item){ 
-							if (!isset($item['sl'])) {
-								$item['sl'] = 1; // Thiết lập số lượng mặc định là 1 nếu không tồn tại
+							if (isset($_SESSION['giohang'][$index]['sanpham_gia'])) {
+								$gia_san_pham = $item['sanpham_gia'];
+							} else {
+								// Xử lý nếu key không tồn tại trong mảng
 							}
-								$subtotal = $item['sl'] * $item['sanpham_gia'];
+								$subtotal = $item['sanpham_soluong'] * $gia_san_pham;
 								$total+=$subtotal;
 								$i++;
 							?>
@@ -147,8 +165,9 @@ elseif(isset($_POST['capnhatsoluong'])){
 									</td>
 									<td class="invert">
 										<input type="hidden" name="product_id[]" value="<?php echo $item['sanpham_id'] ?>">
-										<p style="align-center:center;"><a style="    text-decoration: none;" href ="?quanly=giohang&increase=<?php echo $index?>">-</a> <?php echo $item['sl']?><a style="    text-decoration: none;" href ="?quanly=giohang&decrease=<?php echo $index?>">+</a></p>
-									
+										<p style="align-center:center;"><a style="    text-decoration: none;" href ="?quanly=giohang&increase=<?php echo $index?>">-</a> <?php echo $item['sanpham_soluong']?><a style="    text-decoration: none;" href ="?quanly=giohang&decrease=<?php echo $index?>">+</a></p>
+										<input type="hidden" name="thanhtoan_product_id[]" value="<?php echo $item['sanpham_id'] ?>">
+									<input type="hidden" name="thanhtoan_soluong[]" value="<?php echo $item['sanpham_soluong'] ?>">
 										
 									</td>
 									<td class="invert"><?php echo $item['sanpham_name'] ?></td>
@@ -172,14 +191,12 @@ elseif(isset($_POST['capnhatsoluong'])){
 									$sql_giohang_select = mysqli_query($con,"SELECT * FROM tbl_giohang");
 									$count_giohang_select = mysqli_num_rows($sql_giohang_select);
 
-									if(isset($_SESSION['dangnhap_home']) && count($_SESSION['giohang'])>0){
-										while($row_1 = mysqli_fetch_array($sql_giohang_select)){
-									?>
 									
-									<input type="hidden" name="thanhtoan_product_id[]" value="<?php echo $row_1['sanpham_id'] ?>">
-									<input type="hidden" name="thanhtoan_soluong[]" value="<?php echo $row_1['soluong'] ?>">
-									<?php 
-									}
+
+									if(isset($_SESSION['dangnhap_home']) && count($_SESSION['giohang'])>0){
+
+										
+										
 									?>
 									<input type="submit" class="btn btn-primary" value="Thanh toán giỏ hàng" name="thanhtoandangnhap">
 									
@@ -237,12 +254,11 @@ elseif(isset($_POST['capnhatsoluong'])){
 								</div>
 								<?php
 								$sql_lay_giohang = mysqli_query($con,"SELECT * FROM tbl_giohang ORDER BY giohang_id DESC");
-								while($row_thanhtoan = mysqli_fetch_array($sql_lay_giohang)){ 
-								?>
-									<input type="hidden" name="thanhtoan_product_id[]" value="<?php echo $row_thanhtoan['sanpham_id'] ?>">
-									<input type="hidden" name="thanhtoan_soluong[]" value="<?php echo $row_thanhtoan['soluong'] ?>">
-								<?php
-								} 
+
+
+							
+
+								
 								?>
 								<input type="submit" name="thanhtoan" class="btn btn-success" style="width: 20%" value="Thanh toán">
 								
@@ -260,14 +276,7 @@ elseif(isset($_POST['capnhatsoluong'])){
 	</div>
 	<!-- thông báo thanh toán thành công: -->
 			<?php
-               if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["thanhtoandangnhap"])) {
-                   echo '<div class="alert alert-success">Đặt hàng thành công</div>';
-               }
-           ?>
-		   <?php
-               if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["thanhtoan"])) {
-                   echo '<div class="alert alert-success">Đặt hàng thành công</div>';
-               }
+         
            ?>
 	<!-- //checkout page -->
 
