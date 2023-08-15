@@ -165,7 +165,7 @@
 
 						<td><?php echo $row_bv['tendanhmuc'] ?></td>
 						
-						<td><a href="?xoa=<?php echo $row_bv['baiviet_id'] ?>">Xóa</a> || <a href="xulybaiviet.php?act=capnhat&capnhat_id=<?php echo $row_bv['baiviet_id'] ?>">Cập nhật</a></td>
+						<td><a href="index.php?act=xulybaiviet&xoa=<?php echo $row_bv['baiviet_id'] ?>">Xóa</a> || <a href="xulybaiviet.php?act=capnhat&capnhat_id=<?php echo $row_bv['baiviet_id'] ?>">Cập nhật</a></td>
 					</tr>
 				<?php
 					} 

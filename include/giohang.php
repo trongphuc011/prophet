@@ -1,31 +1,37 @@
 <?php
- if(isset($_POST['themgiohang'])){
- 	$tensanpham = $_POST['tensanpham'];
- 	$sanpham_id = $_POST['sanpham_id'];
- 	$hinhanh = $_POST['hinhanh'];
- 	$gia = $_POST['giasanpham'];
- 	$soluong = $_POST['soluong'];	
- 	$sql_select_giohang = mysqli_query($con,"SELECT * FROM tbl_giohang WHERE sanpham_id='$sanpham_id'");
- 	$count = mysqli_num_rows($sql_select_giohang);
- 	if($count>0){
- 		$row_sanpham = mysqli_fetch_array($sql_select_giohang);
- 		$soluong = $row_sanpham['soluong'] + 1;
- 		$sql_giohang = "UPDATE tbl_giohang SET soluong='$soluong' WHERE sanpham_id='$sanpham_id'";
- 	}else{
- 		$soluong = $soluong;
- 		$sql_giohang = "INSERT INTO tbl_giohang(tensanpham,sanpham_id,giasanpham,hinhanh,soluong) values ('$tensanpham','$sanpham_id','$gia','$hinhanh','$soluong')";
 
- 	}
- 	$insert_row = mysqli_query($con,$sql_giohang);
- 	// if($insert_row==0){
- 	// 	header('Location:index.php?quanly=chitietsp&id='.$sanpham_id);	
- 	// }đsvds
 
- }elseif(isset($_POST['capnhatsoluong'])){
+
+if(isset($_GET['increase'])){
+	$index = $_GET['increase'];
+	if($_SESSION['giohang'][$index]['sl']>1){
+		$_SESSION['giohang'][$index]['sl']-= 1;
+		
+		
+	}
+	
+}
+if(isset($_GET['decrease'])){
+	$index = $_GET['decrease'];
+	$_SESSION['giohang'][$index]['sl']+= 1;
+	
+}
+
+if(isset($_GET['del'])){
+	if($_GET['del']=='all'){
+		unset($_SESSION['giohang']);
+		header("location:sanpham.php");
+	} else {
+		$index=$_GET['del'];
+		unset($_SESSION['giohang'][$index]);
+	  
+	}
+} 
+elseif(isset($_POST['capnhatsoluong'])){
 	if (isset($_POST['product_id']) && is_array($_POST['product_id'])) {
  	for($i=0;$i<count($_POST['product_id']);$i++){
  		$sanpham_id = $_POST['product_id'][$i];
- 		$soluong = $_POST['soluong'][$i];
+ 		$soluong = isset($_POST['soluong'][$i]) ? $_POST['soluong'][$i] : 1;
  		if($soluong<=0){
  			$sql_delete = mysqli_query($con,"DELETE FROM tbl_giohang WHERE sanpham_id='$sanpham_id'");
  		}else{
@@ -122,9 +128,13 @@
 							<?php
 							$i = 0;
 							$total = 0;
-							while($row_fetch_giohang = mysqli_fetch_array($sql_lay_giohang)){ 
-
-								$subtotal = $row_fetch_giohang['soluong'] * $row_fetch_giohang['giasanpham'];
+			
+							
+						if(isset($_SESSION['giohang']))  foreach($_SESSION['giohang']  as $index => $item){ 
+							if (!isset($item['sl'])) {
+								$item['sl'] = 1; // Thiết lập số lượng mặc định là 1 nếu không tồn tại
+							}
+								$subtotal = $item['sl'] * $item['sanpham_gia'];
 								$total+=$subtotal;
 								$i++;
 							?>
@@ -132,20 +142,21 @@
 									<td class="invert"><?php echo $i ?></td>
 									<td class="invert-image">
 										<a href="single.html">
-											<img src="uploads/<?php echo $row_fetch_giohang['hinhanh'] ?>" alt=" "  class="img-responsive" style="width:200px; height:300px">
+											<img src="uploads/<?php echo $item['sanpham_image'] ?>" alt=" "  class="img-responsive" style="width:200px; height:300px">
 										</a>
 									</td>
 									<td class="invert">
-										<input type="hidden" name="product_id[]" value="<?php echo $row_fetch_giohang['sanpham_id'] ?>">
-										<input type="number" min="1" name="soluong[]" value="<?php echo $row_fetch_giohang['soluong'] ?>">
+										<input type="hidden" name="product_id[]" value="<?php echo $item['sanpham_id'] ?>">
+										<p style="align-center:center;"><a style="    text-decoration: none;" href ="?quanly=giohang&increase=<?php echo $index?>">-</a> <?php echo $item['sl']?><a style="    text-decoration: none;" href ="?quanly=giohang&decrease=<?php echo $index?>">+</a></p>
 									
 										
 									</td>
-									<td class="invert"><?php echo $row_fetch_giohang['tensanpham'] ?></td>
-									<td class="invert"><?php echo number_format($row_fetch_giohang['giasanpham']).'vnđ' ?></td>
+									<td class="invert"><?php echo $item['sanpham_name'] ?></td>
+									<td class="invert"><?php echo number_format($item['sanpham_gia']).'vnđ' ?></td>
 									<td class="invert"><?php echo number_format($subtotal).'vnđ' ?></td>
-									<td class="invert">
-										<a href="?quanly=giohang&xoa=<?php echo $row_fetch_giohang['giohang_id'] ?>">Xóa</a>
+									
+									
+										<td><a class="xoa" href="?quanly=giohang&del=<?php echo $index ?>">Xóa</a></td>
 									</td>
 								</tr>
 								<?php
@@ -156,12 +167,12 @@
 
 								</tr>
 								<tr>
-									<td colspan="7"><input type="submit" class="btn btn-success" value="Cập nhật giỏ hàng" name="capnhatsoluong">
+									<td colspan="7">
 									<?php 
 									$sql_giohang_select = mysqli_query($con,"SELECT * FROM tbl_giohang");
 									$count_giohang_select = mysqli_num_rows($sql_giohang_select);
 
-									if(isset($_SESSION['dangnhap_home']) && $count_giohang_select>0){
+									if(isset($_SESSION['dangnhap_home']) && count($_SESSION['giohang'])>0){
 										while($row_1 = mysqli_fetch_array($sql_giohang_select)){
 									?>
 									
@@ -243,6 +254,7 @@
 			</div>
 			<?php
 			} 
+			
 			?>
 		</div>
 	</div>
@@ -258,3 +270,5 @@
                }
            ?>
 	<!-- //checkout page -->
+
+	

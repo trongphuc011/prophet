@@ -2,8 +2,11 @@
 include('../db/connect.php');
 $sql_donhang = mysqli_query($con,"SELECT * FROM tbl_donhang,tbl_sanpham WHERE tinhtrang = 1 AND tbl_donhang.sanpham_id=tbl_sanpham.sanpham_id");
 $tong_thang = array_fill(1, 12, 0); // Mảng để lưu tổng doanh thu của từng tháng
-
+$totalProcessedOrders = 0;
 while ($row_donhang = mysqli_fetch_array($sql_donhang)) {
+    if($row_donhang['tinhtrang'] == 1){
+        $totalProcessedOrders++;
+    }
     $thang_dat = date("n", strtotime($row_donhang['ngaythang'])); // Lấy tháng từ ngày đặt hàng
     $doanh_thu_thang = $row_donhang['soluong'] * $row_donhang['sanpham_giakhuyenmai'];
 
@@ -11,11 +14,10 @@ while ($row_donhang = mysqli_fetch_array($sql_donhang)) {
 }
 
 
-echo '</div>';
-echo "<div class='tongtien'>";
+
+
 $total_revenue = array_sum($tong_thang); // Tính tổng doanh thu của 12 tháng
-echo "</div>";
-echo '</div>';
+
 
 ?>
 
@@ -35,9 +37,9 @@ echo '</div>';
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Tổng doanh thu tháng</div>
+                                                Tổng doanh thu</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                            <?php echo  number_format($total_revenue) . 'vnđ</p>';?>    
+                                            <?php echo  number_format($total_revenue) . ' vnđ</p>';?>    
 
                                             </div>
                                         </div>
@@ -49,25 +51,7 @@ echo '</div>';
                             </div>
                         </div>
 
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Doanh thu tháng trước(VNĐ)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
+                      
                         
 
                         <!-- Pending Requests Card Example -->
@@ -77,8 +61,8 @@ echo '</div>';
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Tổng đơn hàng</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
+                                                Tổng đơn hàng đã xử lý</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $totalProcessedOrders ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-comments fa-2x text-gray-300"></i>

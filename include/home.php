@@ -1,5 +1,38 @@
 <?php
 include('include/slider.php');
+function connectDB($sql){
+	//Kết nối database
+	$servername = "localhost";
+	$username = "root";
+	$password = "";
+
+	try {
+	  
+	$conn = new PDO("mysql:host=$servername;dbname=bandienmay", $username, $password);
+	// set the PDO error mode to exception
+	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+   //  echo "Connected successfully";
+	$stmt = $conn->prepare("SELECT * FROM tbl_sanpham");
+	$stmt->execute();
+
+	// set the resulting array to associative
+	$result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+	$products=$stmt->fetchAll();
+	return $products;
+   } catch(PDOException $e) {
+	   echo "Connection failed: " . $e->getMessage();
+	   }
+   }
+
+// Check if the session is not started, then start it
+
+if(!isset($_SESSION['giohang'])) $_SESSION['giohang'] = array();
+
+
+// Check if the 'themgiohang' form was submitted
+
+
+
 ?>
 <!-- top Products -->
 <div class="ads-grid py-sm-5 py-4">
@@ -21,10 +54,13 @@ include('include/slider.php');
 						<h2 style="margin-top:30px;" ><?php echo 'Tất cả sản phẩm' ?>
 							<div class="row">
 								<?php
-								$sql_product = mysqli_query($con,"SELECT * FROM tbl_sanpham ORDER BY sanpham_id DESC");
-								while($row_sanpham = mysqli_fetch_array($sql_product)){ 
+								$sql_product = connectDB("SELECT * FROM tbl_sanpham ORDER BY sanpham_id DESC");
+								
+								foreach($sql_product as  $index=> $row_sanpham){
+									
 									
 								?>
+								
 								<div class="col-md-3 product-men mt-5">
 									<div class="men-pro-item simpleCart_shelfItem">
 										<div class="men-thumb-item  text-center">
@@ -48,17 +84,18 @@ include('include/slider.php');
 												<del><?php echo number_format($row_sanpham['sanpham_gia']).'vnđ' ?></del>
 											</div>
 											<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-												<form action="?quanly=giohang" method="post">
-												<fieldset>
+												
+											<form action="" method="post">
 													<input type="hidden" name="tensanpham" value="<?php echo $row_sanpham['sanpham_name'] ?>" />
 													<input type="hidden" name="sanpham_id" value="<?php echo $row_sanpham['sanpham_id'] ?>" />
 													<input type="hidden" name="giasanpham" value="<?php echo $row_sanpham['sanpham_gia'] ?>" />
 													<input type="hidden" name="hinhanh" value="<?php echo $row_sanpham['sanpham_image'] ?>" />
 													<input type="hidden" name="soluong" value="1" />			
-													<input class="buy" type="submit" name="themgiohang" value="Thêm giỏ hàng"  />
-													
-												</fieldset>
-											</form>
+													<input type="hidden" name="index" value="<?php echo $index ?>">
+    <input class="buy" type="submit" name="themgiohang" value="Thêm giỏ hàng"  />
+															
+													</form>	
+											
 											</div>
 										</div>
 									</div>
@@ -70,14 +107,23 @@ include('include/slider.php');
 							</div>
 						</div>
 						<!-- //first section -->
-							<?php
-							
-							?>
+						
 						
 					</div>
 				</div>
 
-				
+				<?php 
+				if (isset($_POST['themgiohang']) && $_POST['themgiohang']) {
+					if (isset($_POST['index'])) {
+						$index = $_POST['index'];
+						
+						
+						
+						
+						array_push($_SESSION['giohang'], $sql_product[$index]);
+					}
+				}
+				?>
 				<!-- //product left -->
 
 				<!-- product right -->
@@ -177,4 +223,12 @@ include('include/slider.php');
 			</div>
 		</div>
 	</div>
+
+	<?php 
+		if (isset($_SESSION['giohang'])){
+			
+		} else {
+			echo 'ko';
+		}
+	?>
 	<!-- //top products -->

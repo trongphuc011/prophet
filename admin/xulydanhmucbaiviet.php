@@ -77,7 +77,7 @@
 					<tr>
 						<td><?php echo $i; ?></td>
 						<td><?php echo $row_category['tendanhmuc'] ?></td>
-						<td><a href="?xoa=<?php echo $row_category['danhmuctin_id'] ?>">Xóa</a> || <a href="index.php?act=xulydanhmucbaiviet&quanly=capnhat&id=<?php echo $row_category['danhmuctin_id'] ?>">Cập nhật</a></td>
+						<td><a href="index.php?act=xulydanhmucbaiviet&xoa=<?php echo $row_category['danhmuctin_id'] ?>">Xóa</a> || <a href="index.php?act=xulydanhmucbaiviet&quanly=capnhat&id=<?php echo $row_category['danhmuctin_id'] ?>">Cập nhật</a></td>
 					</tr>
 					<?php
 					} 
